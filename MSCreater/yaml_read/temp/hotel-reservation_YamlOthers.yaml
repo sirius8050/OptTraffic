@@ -1,0 +1,173 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: reservation-pv
+  namespace: hotel-reservation
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /data/volumes/reservation-pv
+    type: DirectoryOrCreate
+  storageClassName: reservation-storage
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: reservation-pvc
+  namespace: hotel-reservation
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: reservation-storage
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: user-pvc
+  namespace: hotel-reservation
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: user-storage
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: user-pv
+  namespace: hotel-reservation
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /data/volumes/user-pv
+    type: DirectoryOrCreate
+  storageClassName: user-storage
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: geo-pv
+  namespace: hotel-reservation
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /data/volumes/geo-pv
+    type: DirectoryOrCreate
+  storageClassName: geo-storage
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: geo-pvc
+  namespace: hotel-reservation
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: geo-storage
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: recommendation-pv
+  namespace: hotel-reservation
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /data/volumes/recommendation-pv
+    type: DirectoryOrCreate
+  storageClassName: recommendation-storage
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: recommendation-pvc
+  namespace: hotel-reservation
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: recommendation-storage
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: profile-pv
+  namespace: hotel-reservation
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /data/volumes/profile-pv
+    type: DirectoryOrCreate
+  storageClassName: profile-storage
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: profile-pvc
+  namespace: hotel-reservation
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: profile-storage
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: rate-pv
+  namespace: hotel-reservation
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /data/volumes/rate-pv
+    type: DirectoryOrCreate
+  storageClassName: rate-storage
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rate-pvc
+  namespace: hotel-reservation
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: rate-storage

@@ -1,0 +1,42 @@
+{
+  "media-microsvc": {
+    "nginx-web-server": [
+      "unique-id-service",
+      "text-service",
+      "movie-id-service",
+      "user-service"
+    ],
+    "user-service": [
+      "user-memcached",
+      "user-mongodb",
+      "compose-review-service"
+    ],
+    "movie-id-service": [
+      "compose-review-service",
+      "movie-id-memcached",
+      "movie-id-mongodb",
+      "rating-service"
+    ],
+    "text-service": "compose-review-service",
+    "unique-id-service": "compose-review-service",
+    "rating-service": [
+      "rating-redis",
+      "compose-review-service"
+    ],
+    "compose-review-service": [
+      "user-review-service",
+      "review-storage-service",
+      "compose-review-memcached",
+      "movie-review-service"
+    ],
+    "user-review-service": [
+      "user-review-mongodb",
+      "user-review-redis"
+    ],
+    "review-storage-service": "review-storage-mongodb",
+    "movie-review-service": [
+      "movie-review-mongodb",
+      "movie-review-redis"
+    ]
+  }
+}

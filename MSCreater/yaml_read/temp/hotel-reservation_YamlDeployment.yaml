@@ -1,0 +1,2424 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: consul
+    more-replicas: v0
+  name: consul-0
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: consul
+      more-replicas: v0
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: consul
+        more-replicas: v0
+    spec:
+      containers:
+      - image: consul:latest
+        name: consul
+        ports:
+        - containerPort: 8300
+        - containerPort: 8400
+        - containerPort: 8500
+        - containerPort: 53
+          protocol: UDP
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: consul
+    more-replicas: v1
+  name: consul-1
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: consul
+      more-replicas: v1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: consul
+        more-replicas: v1
+    spec:
+      containers:
+      - image: consul:latest
+        name: consul
+        ports:
+        - containerPort: 8300
+        - containerPort: 8400
+        - containerPort: 8500
+        - containerPort: 53
+          protocol: UDP
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: consul
+    more-replicas: v2
+  name: consul-2
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: consul
+      more-replicas: v2
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: consul
+        more-replicas: v2
+    spec:
+      containers:
+      - image: consul:latest
+        name: consul
+        ports:
+        - containerPort: 8300
+        - containerPort: 8400
+        - containerPort: 8500
+        - containerPort: 53
+          protocol: UDP
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: consul
+    more-replicas: v3
+  name: consul-3
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: consul
+      more-replicas: v3
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: consul
+        more-replicas: v3
+    spec:
+      containers:
+      - image: consul:latest
+        name: consul
+        ports:
+        - containerPort: 8300
+        - containerPort: 8400
+        - containerPort: 8500
+        - containerPort: 53
+          protocol: UDP
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: reservation
+    more-replicas: v0
+  name: reservation-0
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: reservation
+      more-replicas: v0
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: reservation
+        more-replicas: v0
+    spec:
+      containers:
+      - command:
+        - reservation
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-reservation
+        ports:
+        - containerPort: 8087
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: reservation
+    more-replicas: v1
+  name: reservation-1
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: reservation
+      more-replicas: v1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: reservation
+        more-replicas: v1
+    spec:
+      containers:
+      - command:
+        - reservation
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-reservation
+        ports:
+        - containerPort: 8087
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: reservation
+    more-replicas: v2
+  name: reservation-2
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: reservation
+      more-replicas: v2
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: reservation
+        more-replicas: v2
+    spec:
+      containers:
+      - command:
+        - reservation
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-reservation
+        ports:
+        - containerPort: 8087
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: reservation
+    more-replicas: v3
+  name: reservation-3
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: reservation
+      more-replicas: v3
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: reservation
+        more-replicas: v3
+    spec:
+      containers:
+      - command:
+        - reservation
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-reservation
+        ports:
+        - containerPort: 8087
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: reservation
+    more-replicas: v4
+  name: reservation-4
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: reservation
+      more-replicas: v4
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: reservation
+        more-replicas: v4
+    spec:
+      containers:
+      - command:
+        - reservation
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-reservation
+        ports:
+        - containerPort: 8087
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: reservation
+    more-replicas: v5
+  name: reservation-5
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: reservation
+      more-replicas: v5
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: reservation
+        more-replicas: v5
+    spec:
+      containers:
+      - command:
+        - reservation
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-reservation
+        ports:
+        - containerPort: 8087
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: mongodb-reservation
+  name: mongodb-reservation
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: mongodb-reservation
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: mongodb-reservation
+    spec:
+      containers:
+      - image: mongo:4.4.6
+        name: hotel-reserv-reservation-mongo
+        ports:
+        - containerPort: 27017
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+        volumeMounts:
+        - mountPath: /data/db
+          name: reservation
+      hostname: reservation-db
+      restartPolicy: Always
+      volumes:
+      - name: reservation
+        persistentVolumeClaim:
+          claimName: reservation-pvc
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: memcached-reserve
+  name: memcached-reserve
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: memcached-reserve
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: memcached-reserve
+    spec:
+      containers:
+      - env:
+        - name: MEMCACHED_CACHE_SIZE
+          value: '128'
+        - name: MEMCACHED_THREADS
+          value: '2'
+        image: memcached
+        name: hotel-reserv-reservation-mmc
+        ports:
+        - containerPort: 11211
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: mongodb-user
+  name: mongodb-user
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: mongodb-user
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: mongodb-user
+    spec:
+      containers:
+      - image: mongo:4.4.6
+        name: hotel-reserv-user-mongo
+        ports:
+        - containerPort: 27017
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+        volumeMounts:
+        - mountPath: /data/db
+          name: user
+      hostname: user-db
+      restartPolicy: Always
+      volumes:
+      - name: user
+        persistentVolumeClaim:
+          claimName: user-pvc
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: user
+    more-replicas: v0
+  name: user-0
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: user
+      more-replicas: v0
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: user
+        more-replicas: v0
+    spec:
+      containers:
+      - command:
+        - user
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-user
+        ports:
+        - containerPort: 8086
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: user
+    more-replicas: v1
+  name: user-1
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: user
+      more-replicas: v1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: user
+        more-replicas: v1
+    spec:
+      containers:
+      - command:
+        - user
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-user
+        ports:
+        - containerPort: 8086
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: user
+    more-replicas: v2
+  name: user-2
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: user
+      more-replicas: v2
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: user
+        more-replicas: v2
+    spec:
+      containers:
+      - command:
+        - user
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-user
+        ports:
+        - containerPort: 8086
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: user
+    more-replicas: v3
+  name: user-3
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: user
+      more-replicas: v3
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: user
+        more-replicas: v3
+    spec:
+      containers:
+      - command:
+        - user
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-user
+        ports:
+        - containerPort: 8086
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: search
+    more-replicas: v0
+  name: search-0
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: search
+      more-replicas: v0
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: search
+        more-replicas: v0
+    spec:
+      containers:
+      - command:
+        - search
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-search
+        ports:
+        - containerPort: 8082
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: search
+    more-replicas: v1
+  name: search-1
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: search
+      more-replicas: v1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: search
+        more-replicas: v1
+    spec:
+      containers:
+      - command:
+        - search
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-search
+        ports:
+        - containerPort: 8082
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: search
+    more-replicas: v2
+  name: search-2
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: search
+      more-replicas: v2
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: search
+        more-replicas: v2
+    spec:
+      containers:
+      - command:
+        - search
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-search
+        ports:
+        - containerPort: 8082
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: search
+    more-replicas: v3
+  name: search-3
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: search
+      more-replicas: v3
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: search
+        more-replicas: v3
+    spec:
+      containers:
+      - command:
+        - search
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-search
+        ports:
+        - containerPort: 8082
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: search
+    more-replicas: v4
+  name: search-4
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: search
+      more-replicas: v4
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: search
+        more-replicas: v4
+    spec:
+      containers:
+      - command:
+        - search
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-search
+        ports:
+        - containerPort: 8082
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: search
+    more-replicas: v5
+  name: search-5
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: search
+      more-replicas: v5
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: search
+        more-replicas: v5
+    spec:
+      containers:
+      - command:
+        - search
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-search
+        ports:
+        - containerPort: 8082
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: geo
+    more-replicas: v0
+  name: geo-0
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: geo
+      more-replicas: v0
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: geo
+        more-replicas: v0
+    spec:
+      containers:
+      - command:
+        - geo
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-geo
+        ports:
+        - containerPort: 8083
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: geo
+    more-replicas: v1
+  name: geo-1
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: geo
+      more-replicas: v1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: geo
+        more-replicas: v1
+    spec:
+      containers:
+      - command:
+        - geo
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-geo
+        ports:
+        - containerPort: 8083
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: mongodb-geo
+  name: mongodb-geo
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: mongodb-geo
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: mongodb-geo
+    spec:
+      containers:
+      - image: mongo:4.4.6
+        name: hotel-reserv-geo-mongo
+        ports:
+        - containerPort: 27017
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+        volumeMounts:
+        - mountPath: /data/db
+          name: geo
+      restartPolicy: Always
+      volumes:
+      - name: geo
+        persistentVolumeClaim:
+          claimName: geo-pvc
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: frontend
+    more-replicas: v0
+  name: frontend-0
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: frontend
+      more-replicas: v0
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: frontend
+        more-replicas: v0
+    spec:
+      containers:
+      - command:
+        - frontend
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-frontend
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: frontend
+    more-replicas: v1
+  name: frontend-1
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: frontend
+      more-replicas: v1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: frontend
+        more-replicas: v1
+    spec:
+      containers:
+      - command:
+        - frontend
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-frontend
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: frontend
+    more-replicas: v2
+  name: frontend-2
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: frontend
+      more-replicas: v2
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: frontend
+        more-replicas: v2
+    spec:
+      containers:
+      - command:
+        - frontend
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-frontend
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: frontend
+    more-replicas: v3
+  name: frontend-3
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: frontend
+      more-replicas: v3
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: frontend
+        more-replicas: v3
+    spec:
+      containers:
+      - command:
+        - frontend
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-frontend
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: frontend
+    more-replicas: v4
+  name: frontend-4
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: frontend
+      more-replicas: v4
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: frontend
+        more-replicas: v4
+    spec:
+      containers:
+      - command:
+        - frontend
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-frontend
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: frontend
+    more-replicas: v5
+  name: frontend-5
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: frontend
+      more-replicas: v5
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: frontend
+        more-replicas: v5
+    spec:
+      containers:
+      - command:
+        - frontend
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-frontend
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: recommendation
+    more-replicas: v0
+  name: recommendation-0
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: recommendation
+      more-replicas: v0
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: recommendation
+        more-replicas: v0
+    spec:
+      containers:
+      - command:
+        - recommendation
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-recommendation
+        ports:
+        - containerPort: 8085
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: recommendation
+    more-replicas: v1
+  name: recommendation-1
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: recommendation
+      more-replicas: v1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: recommendation
+        more-replicas: v1
+    spec:
+      containers:
+      - command:
+        - recommendation
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-recommendation
+        ports:
+        - containerPort: 8085
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: recommendation
+    more-replicas: v2
+  name: recommendation-2
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: recommendation
+      more-replicas: v2
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: recommendation
+        more-replicas: v2
+    spec:
+      containers:
+      - command:
+        - recommendation
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-recommendation
+        ports:
+        - containerPort: 8085
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: recommendation
+    more-replicas: v3
+  name: recommendation-3
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: recommendation
+      more-replicas: v3
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: recommendation
+        more-replicas: v3
+    spec:
+      containers:
+      - command:
+        - recommendation
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-recommendation
+        ports:
+        - containerPort: 8085
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: mongodb-recommendation
+  name: mongodb-recommendation
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: mongodb-recommendation
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: mongodb-recommendation
+    spec:
+      containers:
+      - image: mongo:4.4.6
+        name: hotel-reserv-recommendation-mongo
+        ports:
+        - containerPort: 27017
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+        volumeMounts:
+        - mountPath: /data/db
+          name: recommendation
+      hostname: recommendation-db
+      restartPolicy: Always
+      volumes:
+      - name: recommendation
+        persistentVolumeClaim:
+          claimName: recommendation-pvc
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: jaeger
+  name: jaeger
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: jaeger
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: jaeger
+    spec:
+      containers:
+      - image: jaegertracing/all-in-one:latest
+        name: hotel-reserv-jaeger
+        ports:
+        - containerPort: 14269
+        - containerPort: 5778
+        - containerPort: 14268
+        - containerPort: 14267
+        - containerPort: 16686
+        - containerPort: 5775
+          protocol: UDP
+        - containerPort: 6831
+          protocol: UDP
+        - containerPort: 6832
+          protocol: UDP
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: memcached-profile
+  name: memcached-profile
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: memcached-profile
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: memcached-profile
+    spec:
+      containers:
+      - env:
+        - name: MEMCACHED_CACHE_SIZE
+          value: '128'
+        - name: MEMCACHED_THREADS
+          value: '2'
+        image: memcached
+        name: hotel-reserv-profile-mmc
+        ports:
+        - containerPort: 11211
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: profile
+    more-replicas: v0
+  name: profile-0
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: profile
+      more-replicas: v0
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: profile
+        more-replicas: v0
+    spec:
+      containers:
+      - command:
+        - profile
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-profile
+        ports:
+        - containerPort: 8081
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: profile
+    more-replicas: v1
+  name: profile-1
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: profile
+      more-replicas: v1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: profile
+        more-replicas: v1
+    spec:
+      containers:
+      - command:
+        - profile
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-profile
+        ports:
+        - containerPort: 8081
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: profile
+    more-replicas: v2
+  name: profile-2
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: profile
+      more-replicas: v2
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: profile
+        more-replicas: v2
+    spec:
+      containers:
+      - command:
+        - profile
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-profile
+        ports:
+        - containerPort: 8081
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: profile
+    more-replicas: v3
+  name: profile-3
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: profile
+      more-replicas: v3
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: profile
+        more-replicas: v3
+    spec:
+      containers:
+      - command:
+        - profile
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-profile
+        ports:
+        - containerPort: 8081
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: mongodb-profile
+  name: mongodb-profile
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: mongodb-profile
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: mongodb-profile
+    spec:
+      containers:
+      - image: mongo:4.4.6
+        name: hotel-reserv-profile-mongo
+        ports:
+        - containerPort: 27017
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+        volumeMounts:
+        - mountPath: /data/db
+          name: profile
+      hostname: profile-db
+      restartPolicy: Always
+      volumes:
+      - name: profile
+        persistentVolumeClaim:
+          claimName: profile-pvc
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: memcached-rate
+  name: memcached-rate
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: memcached-rate
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: memcached-rate
+    spec:
+      containers:
+      - env:
+        - name: MEMCACHED_CACHE_SIZE
+          value: '128'
+        - name: MEMCACHED_THREADS
+          value: '2'
+        image: memcached
+        name: hotel-reserv-rate-mmc
+        ports:
+        - containerPort: 11211
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: rate
+    more-replicas: v0
+  name: rate-0
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: rate
+      more-replicas: v0
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: rate
+        more-replicas: v0
+    spec:
+      containers:
+      - command:
+        - rate
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-rate
+        ports:
+        - containerPort: 8084
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: rate
+    more-replicas: v1
+  name: rate-1
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: rate
+      more-replicas: v1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: rate
+        more-replicas: v1
+    spec:
+      containers:
+      - command:
+        - rate
+        image: igorrudyk1/hotelreservation:latest
+        name: hotel-reserv-rate
+        ports:
+        - containerPort: 8084
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+      nodeName: skv-node2
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    MSname: hotel-reservation
+    io.kompose.service: mongodb-rate
+  name: mongodb-rate
+  namespace: hotel-reservation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      MSname: hotel-reservation
+      io.kompose.service: mongodb-rate
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+        sidecar.istio.io/statsInclusionPrefixes: cluster.outbound,cluster_manager,listener_manager,http_mixer_filter,tcp_mixer_filter,server,cluster.xds-grp,listener,connection_manager
+        sidecar.istio.io/statsInclusionRegexps: http.*
+      creationTimestamp: null
+      labels:
+        MSname: hotel-reservation
+        io.kompose.service: mongodb-rate
+    spec:
+      containers:
+      - image: mongo:4.4.6
+        name: hotel-reserv-rate-mongo
+        ports:
+        - containerPort: 27017
+        resources:
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 1000m
+        volumeMounts:
+        - mountPath: /data/db
+          name: rate
+      restartPolicy: Always
+      volumes:
+      - name: rate
+        persistentVolumeClaim:
+          claimName: rate-pvc
+status: {}

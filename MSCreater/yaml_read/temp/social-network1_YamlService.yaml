@@ -1,0 +1,440 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-timeline-mongodb
+    death-star-project: social-network
+  name: user-timeline-mongodb
+  namespace: social-network1
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: user-timeline-mongodb
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: social-graph-mongodb
+    death-star-project: social-network
+  name: social-graph-mongodb
+  namespace: social-network1
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: social-graph-mongodb
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: post-storage-mongodb
+    death-star-project: social-network
+  name: post-storage-mongodb
+  namespace: social-network1
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: post-storage-mongodb
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: media-mongodb
+    death-star-project: social-network
+  name: media-mongodb
+  namespace: social-network1
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: media-mongodb
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: jaeger
+    death-star-project: social-network
+  name: jaeger-out
+  namespace: social-network1
+spec:
+  ports:
+  - nodePort: 32100
+    port: 16686
+  selector:
+    app-name: jaeger
+    death-star-project: social-network
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: jaeger
+    death-star-project: social-network
+  name: jaeger-agent
+  namespace: social-network1
+spec:
+  ports:
+  - name: udp1
+    port: 5775
+    protocol: UDP
+  - name: tcp1
+    port: 5778
+  - name: udp2
+    port: 6831
+    protocol: UDP
+  - name: udp3
+    port: 6832
+    protocol: UDP
+  - name: tcp2
+    port: 14250
+  - name: tcp3
+    port: 14268
+  selector:
+    app-name: jaeger
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-mongodb
+    death-star-project: social-network
+  name: user-mongodb
+  namespace: social-network1
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: user-mongodb
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: url-shorten-mongodb
+    death-star-project: social-network
+  name: url-shorten-mongodb
+  namespace: social-network1
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: url-shorten-mongodb
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: home-timeline-redis
+    death-star-project: social-network
+  name: home-timeline-redis
+  namespace: social-network1
+spec:
+  ports:
+  - port: 6379
+  selector:
+    app-name: home-timeline-redis
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-memcached
+    death-star-project: social-network
+  name: user-memcached
+  namespace: social-network1
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: user-memcached
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-timeline-redis
+    death-star-project: social-network
+  name: user-timeline-redis
+  namespace: social-network1
+spec:
+  ports:
+  - port: 6379
+  selector:
+    app-name: user-timeline-redis
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: post-storage-service
+    death-star-project: social-network
+  name: post-storage-service
+  namespace: social-network1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: post-storage-service
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: media-memcached
+    death-star-project: social-network
+  name: media-memcached
+  namespace: social-network1
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: media-memcached
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: social-graph-redis
+    death-star-project: social-network
+  name: social-graph-redis
+  namespace: social-network1
+spec:
+  ports:
+  - port: 6379
+  selector:
+    app-name: social-graph-redis
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: compose-post-service
+    death-star-project: social-network
+  name: compose-post-service
+  namespace: social-network1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: compose-post-service
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: media-frontend
+    death-star-project: social-network
+  name: media-frontend
+  namespace: social-network1
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app-name: media-frontend
+    death-star-project: social-network
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-timeline-service
+    death-star-project: social-network
+  name: user-timeline-service
+  namespace: social-network1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: user-timeline-service
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: post-storage-memcached
+    death-star-project: social-network
+  name: post-storage-memcached
+  namespace: social-network1
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: post-storage-memcached
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: unique-id-service
+    death-star-project: social-network
+  name: unique-id-service
+  namespace: social-network1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: unique-id-service
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: text-service
+    death-star-project: social-network
+  name: text-service
+  namespace: social-network1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: text-service
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: social-graph-service
+    death-star-project: social-network
+  name: social-graph-service
+  namespace: social-network1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: social-graph-service
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: url-shorten-memcached
+    death-star-project: social-network
+  name: url-shorten-memcached
+  namespace: social-network1
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: url-shorten-memcached
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-service
+    death-star-project: social-network
+  name: user-service
+  namespace: social-network1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: user-service
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: nginx-thrift
+    death-star-project: social-network
+  name: nginx-thrift
+  namespace: social-network1
+spec:
+  ports:
+  - nodePort: 31122
+    port: 8080
+    targetPort: 8080
+  selector:
+    app-name: nginx-thrift
+    death-star-project: social-network
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: media-service
+    death-star-project: social-network
+  name: media-service
+  namespace: social-network1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: media-service
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: home-timeline-service
+    death-star-project: social-network
+  name: home-timeline-service
+  namespace: social-network1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: home-timeline-service
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-mention-service
+    death-star-project: social-network
+  name: user-mention-service
+  namespace: social-network1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: user-mention-service
+    death-star-project: social-network
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: url-shorten-service
+    death-star-project: social-network
+  name: url-shorten-service
+  namespace: social-network1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: url-shorten-service
+    death-star-project: social-network

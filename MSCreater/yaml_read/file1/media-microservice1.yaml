@@ -1,0 +1,1655 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: movie-id-mongodb
+    death-star-project: media-microsvc
+  name: movie-id-mongodb
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: movie-id-mongodb
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: movie-id-mongodb
+    death-star-project: media-microsvc
+  name: movie-id-mongodb
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: movie-id-mongodb
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: movie-id-mongodb
+        death-star-project: media-microsvc
+      name: movie-id-mongodb
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: IfNotPresent
+        name: movie-id-mongodb
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: plot-mongodb
+    death-star-project: media-microsvc
+  name: plot-mongodb
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: plot-mongodb
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: plot-mongodb
+    death-star-project: media-microsvc
+  name: plot-mongodb
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: plot-mongodb
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: plot-mongodb
+        death-star-project: media-microsvc
+      name: plot-mongodb
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: IfNotPresent
+        name: plot-mongodb
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-memcached
+    death-star-project: media-microsvc
+  name: user-memcached
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: user-memcached
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: user-memcached
+    death-star-project: media-microsvc
+  name: user-memcached
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: user-memcached
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: user-memcached
+        death-star-project: media-microsvc
+      name: user-memcached
+    spec:
+      containers:
+      - image: memcached
+        imagePullPolicy: IfNotPresent
+        name: user-memcached
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: cast-info-memcached
+    death-star-project: media-microsvc
+  name: cast-info-memcached
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: cast-info-memcached
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: cast-info-memcached
+    death-star-project: media-microsvc
+  name: cast-info-memcached
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: cast-info-memcached
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: cast-info-memcached
+        death-star-project: media-microsvc
+      name: cast-info-memcached
+    spec:
+      containers:
+      - image: memcached
+        imagePullPolicy: IfNotPresent
+        name: cast-info-memcached
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: compose-review-memcached
+    death-star-project: media-microsvc
+  name: compose-review-memcached
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: compose-review-memcached
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: compose-review-memcached
+    death-star-project: media-microsvc
+  name: compose-review-memcached
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: compose-review-memcached
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: compose-review-memcached
+        death-star-project: media-microsvc
+      name: compose-review-memcached
+    spec:
+      containers:
+      - image: memcached
+        imagePullPolicy: IfNotPresent
+        name: compose-review-memcached
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: nginx-web-server
+    death-star-project: media-microsvc
+  name: nginx-web-server
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 8080
+  selector:
+    app-name: nginx-web-server
+    death-star-project: media-microsvc
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: nginx-web-server
+    death-star-project: media-microsvc
+  name: nginx-web-server
+  namespace: media-microsvc1
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app-name: nginx-web-server
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: nginx-web-server
+        death-star-project: media-microsvc
+      name: nginx-web-server
+    spec:
+      containers:
+      - image: yg397/openresty-thrift:xenial
+        imagePullPolicy: IfNotPresent
+        name: nginx-web-server
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /usr/local/openresty/nginx/lua-scripts
+          name: lua-scripts
+        - mountPath: /usr/local/openresty/nginx/conf/nginx.conf
+          name: nginx-conf
+        - mountPath: /usr/local/openresty/nginx/jaeger-config.json
+          name: jaeger-config-json
+        - mountPath: /gen-lua
+          name: gen-lua
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/mediaMicroservice/nginx-web-server/lua-scripts-k8s1
+          type: Directory
+        name: lua-scripts
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/mediaMicroservice/nginx-web-server/conf/nginx-k8s1.conf
+          type: File
+        name: nginx-conf
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/mediaMicroservice/nginx-web-server/jaeger-config.json
+          type: File
+        name: jaeger-config-json
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/mediaMicroservice/gen-lua
+          type: Directory
+        name: gen-lua
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: compose-review-service
+    death-star-project: media-microsvc
+  name: compose-review-service
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: compose-review-service
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: compose-review-service
+    death-star-project: media-microsvc
+  name: compose-review-service
+  namespace: media-microsvc1
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app-name: compose-review-service
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: compose-review-service
+        death-star-project: media-microsvc
+      name: compose-review-service
+    spec:
+      containers:
+      - command:
+        - ComposeReviewService
+        image: yg397/media-microservices
+        imagePullPolicy: IfNotPresent
+        name: compose-review-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: movie-review-redis
+    death-star-project: media-microsvc
+  name: movie-review-redis
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 6379
+  selector:
+    app-name: movie-review-redis
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: movie-review-redis
+    death-star-project: media-microsvc
+  name: movie-review-redis
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: movie-review-redis
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: movie-review-redis
+        death-star-project: media-microsvc
+      name: movie-review-redis
+    spec:
+      containers:
+      - image: redis
+        imagePullPolicy: IfNotPresent
+        name: movie-review-redis
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: movie-id-memcached
+    death-star-project: media-microsvc
+  name: movie-id-memcached
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: movie-id-memcached
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: movie-id-memcached
+    death-star-project: media-microsvc
+  name: movie-id-memcached
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: movie-id-memcached
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: movie-id-memcached
+        death-star-project: media-microsvc
+      name: movie-id-memcached
+    spec:
+      containers:
+      - image: memcached
+        imagePullPolicy: IfNotPresent
+        name: movie-id-memcached
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: plot-service
+    death-star-project: media-microsvc
+  name: plot-service
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: plot-service
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: plot-service
+    death-star-project: media-microsvc
+  name: plot-service
+  namespace: media-microsvc1
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app-name: plot-service
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: plot-service
+        death-star-project: media-microsvc
+      name: plot-service
+    spec:
+      containers:
+      - command:
+        - PlotService
+        image: yg397/media-microservices
+        imagePullPolicy: IfNotPresent
+        name: plot-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: unique-id-service
+    death-star-project: media-microsvc
+  name: unique-id-service
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: unique-id-service
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: unique-id-service
+    death-star-project: media-microsvc
+  name: unique-id-service
+  namespace: media-microsvc1
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app-name: unique-id-service
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: unique-id-service
+        death-star-project: media-microsvc
+      name: unique-id-service
+    spec:
+      containers:
+      - command:
+        - UniqueIdService
+        image: yg397/media-microservices
+        imagePullPolicy: IfNotPresent
+        name: unique-id-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: text-service
+    death-star-project: media-microsvc
+  name: text-service
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: text-service
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: text-service
+    death-star-project: media-microsvc
+  name: text-service
+  namespace: media-microsvc1
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app-name: text-service
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: text-service
+        death-star-project: media-microsvc
+      name: text-service
+    spec:
+      containers:
+      - command:
+        - TextService
+        image: yg397/media-microservices
+        imagePullPolicy: IfNotPresent
+        name: text-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: rating-redis
+    death-star-project: media-microsvc
+  name: rating-redis
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 6379
+  selector:
+    app-name: rating-redis
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: rating-redis
+    death-star-project: media-microsvc
+  name: rating-redis
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: rating-redis
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: rating-redis
+        death-star-project: media-microsvc
+      name: rating-redis
+    spec:
+      containers:
+      - image: redis
+        imagePullPolicy: IfNotPresent
+        name: rating-redis
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: plot-memcached
+    death-star-project: media-microsvc
+  name: plot-memcached
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: plot-memcached
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: plot-memcached
+    death-star-project: media-microsvc
+  name: plot-memcached
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: plot-memcached
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: plot-memcached
+        death-star-project: media-microsvc
+      name: plot-memcached
+    spec:
+      containers:
+      - image: memcached
+        imagePullPolicy: IfNotPresent
+        name: plot-memcached
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: movie-info-memcached
+    death-star-project: media-microsvc
+  name: movie-info-memcached
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: movie-info-memcached
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: movie-info-memcached
+    death-star-project: media-microsvc
+  name: movie-info-memcached
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: movie-info-memcached
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: movie-info-memcached
+        death-star-project: media-microsvc
+      name: movie-info-memcached
+    spec:
+      containers:
+      - image: memcached
+        imagePullPolicy: IfNotPresent
+        name: movie-info-memcached
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: cast-info-service
+    death-star-project: media-microsvc
+  name: cast-info-service
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: cast-info-service
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: cast-info-service
+    death-star-project: media-microsvc
+  name: cast-info-service
+  namespace: media-microsvc1
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app-name: cast-info-service
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: cast-info-service
+        death-star-project: media-microsvc
+      name: cast-info-service
+    spec:
+      containers:
+      - command:
+        - CastInfoService
+        image: yg397/media-microservices
+        imagePullPolicy: IfNotPresent
+        name: cast-info-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-review-mongodb
+    death-star-project: media-microsvc
+  name: user-review-mongodb
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: user-review-mongodb
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: user-review-mongodb
+    death-star-project: media-microsvc
+  name: user-review-mongodb
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: user-review-mongodb
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: user-review-mongodb
+        death-star-project: media-microsvc
+      name: user-review-mongodb
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: IfNotPresent
+        name: user-review-mongodb
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: movie-review-service
+    death-star-project: media-microsvc
+  name: movie-review-service
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: movie-review-service
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: movie-review-service
+    death-star-project: media-microsvc
+  name: movie-review-service
+  namespace: media-microsvc1
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app-name: movie-review-service
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: movie-review-service
+        death-star-project: media-microsvc
+      name: movie-review-service
+    spec:
+      containers:
+      - command:
+        - MovieReviewService
+        image: yg397/media-microservices
+        imagePullPolicy: IfNotPresent
+        name: movie-review-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: rating-service
+    death-star-project: media-microsvc
+  name: rating-service
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: rating-service
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: rating-service
+    death-star-project: media-microsvc
+  name: rating-service
+  namespace: media-microsvc1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app-name: rating-service
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: rating-service
+        death-star-project: media-microsvc
+      name: rating-service
+    spec:
+      containers:
+      - command:
+        - RatingService
+        image: yg397/media-microservices
+        imagePullPolicy: IfNotPresent
+        name: rating-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-review-redis
+    death-star-project: media-microsvc
+  name: user-review-redis
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 6379
+  selector:
+    app-name: user-review-redis
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: user-review-redis
+    death-star-project: media-microsvc
+  name: user-review-redis
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: user-review-redis
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: user-review-redis
+        death-star-project: media-microsvc
+      name: user-review-redis
+    spec:
+      containers:
+      - image: redis
+        imagePullPolicy: IfNotPresent
+        name: user-review-redis
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: jaeger
+    death-star-project: media-microsvc
+  name: jaeger-out
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 16686
+    targetPort: 16686
+    nodePort: 32004
+  selector:
+    app-name: jaeger
+    death-star-project: media-microsvc
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: jaeger
+    death-star-project: media-microsvc
+  name: jaeger
+  namespace: media-microsvc1
+spec:
+  ports:
+  - name: udp1
+    port: 5775
+    protocol: UDP
+  - name: tcp1
+    port: 5778
+  - name: udp2
+    port: 6831
+    protocol: UDP
+  - name: udp3
+    port: 6832
+    protocol: UDP
+  - name: tcp2
+    port: 14250
+  - name: tcp3
+    port: 14268
+  selector:
+    app-name: jaeger
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: jaeger
+    death-star-project: media-microsvc
+  name: jaeger
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: jaeger
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: jaeger
+        death-star-project: media-microsvc
+      name: jaeger
+    spec:
+      containers:
+      - env:
+        - name: COLLECTOR_ZIPKIN_HTTP_PORT
+          value: '9411'
+        image: jaegertracing/all-in-one:latest
+        imagePullPolicy: IfNotPresent
+        name: jaeger
+        ports:
+        - containerPort: 16686
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: movie-info-mongodb
+    death-star-project: media-microsvc
+  name: movie-info-mongodb
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: movie-info-mongodb
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: movie-info-mongodb
+    death-star-project: media-microsvc
+  name: movie-info-mongodb
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: movie-info-mongodb
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: movie-info-mongodb
+        death-star-project: media-microsvc
+      name: movie-info-mongodb
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: IfNotPresent
+        name: movie-info-mongodb
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-service
+    death-star-project: media-microsvc
+  name: user-service
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: user-service
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: user-service
+    death-star-project: media-microsvc
+  name: user-service
+  namespace: media-microsvc1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app-name: user-service
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: user-service
+        death-star-project: media-microsvc
+      name: user-service
+    spec:
+      containers:
+      - command:
+        - UserService
+        image: yg397/media-microservices
+        imagePullPolicy: IfNotPresent
+        name: user-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: movie-id-service
+    death-star-project: media-microsvc
+  name: movie-id-service
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: movie-id-service
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: movie-id-service
+    death-star-project: media-microsvc
+  name: movie-id-service
+  namespace: media-microsvc1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app-name: movie-id-service
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: movie-id-service
+        death-star-project: media-microsvc
+      name: movie-id-service
+    spec:
+      containers:
+      - command:
+        - MovieIdService
+        image: yg397/media-microservices
+        imagePullPolicy: IfNotPresent
+        name: movie-id-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: movie-info-service
+    death-star-project: media-microsvc
+  name: movie-info-service
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: movie-info-service
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: movie-info-service
+    death-star-project: media-microsvc
+  name: movie-info-service
+  namespace: media-microsvc1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app-name: movie-info-service
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: movie-info-service
+        death-star-project: media-microsvc
+      name: movie-info-service
+    spec:
+      containers:
+      - command:
+        - MovieInfoService
+        image: yg397/media-microservices
+        imagePullPolicy: IfNotPresent
+        name: movie-info-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: review-storage-service
+    death-star-project: media-microsvc
+  name: review-storage-service
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: review-storage-service
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: review-storage-service
+    death-star-project: media-microsvc
+  name: review-storage-service
+  namespace: media-microsvc1
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app-name: review-storage-service
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: review-storage-service
+        death-star-project: media-microsvc
+      name: review-storage-service
+    spec:
+      containers:
+      - command:
+        - ReviewStorageService
+        image: yg397/media-microservices
+        imagePullPolicy: IfNotPresent
+        name: review-storage-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: review-storage-mongodb
+    death-star-project: media-microsvc
+  name: review-storage-mongodb
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: review-storage-mongodb
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: review-storage-mongodb
+    death-star-project: media-microsvc
+  name: review-storage-mongodb
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: review-storage-mongodb
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: review-storage-mongodb
+        death-star-project: media-microsvc
+      name: review-storage-mongodb
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: IfNotPresent
+        name: review-storage-mongodb
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-mongodb
+    death-star-project: media-microsvc
+  name: user-mongodb
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: user-mongodb
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: user-mongodb
+    death-star-project: media-microsvc
+  name: user-mongodb
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: user-mongodb
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: user-mongodb
+        death-star-project: media-microsvc
+      name: user-mongodb
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: IfNotPresent
+        name: user-mongodb
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: cast-info-mongodb
+    death-star-project: media-microsvc
+  name: cast-info-mongodb
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: cast-info-mongodb
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: cast-info-mongodb
+    death-star-project: media-microsvc
+  name: cast-info-mongodb
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: cast-info-mongodb
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: cast-info-mongodb
+        death-star-project: media-microsvc
+      name: cast-info-mongodb
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: IfNotPresent
+        name: cast-info-mongodb
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: review-storage-memcached
+    death-star-project: media-microsvc
+  name: review-storage-memcached
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: review-storage-memcached
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: review-storage-memcached
+    death-star-project: media-microsvc
+  name: review-storage-memcached
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: review-storage-memcached
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: review-storage-memcached
+        death-star-project: media-microsvc
+      name: review-storage-memcached
+    spec:
+      containers:
+      - image: memcached
+        imagePullPolicy: IfNotPresent
+        name: review-storage-memcached
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-review-service
+    death-star-project: media-microsvc
+  name: user-review-service
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: user-review-service
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: user-review-service
+    death-star-project: media-microsvc
+  name: user-review-service
+  namespace: media-microsvc1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app-name: user-review-service
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: user-review-service
+        death-star-project: media-microsvc
+      name: user-review-service
+    spec:
+      containers:
+      - command:
+        - UserReviewService
+        image: yg397/media-microservices
+        imagePullPolicy: IfNotPresent
+        name: user-review-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: movie-review-mongodb
+    death-star-project: media-microsvc
+  name: movie-review-mongodb
+  namespace: media-microsvc1
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: movie-review-mongodb
+    death-star-project: media-microsvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: movie-review-mongodb
+    death-star-project: media-microsvc
+  name: movie-review-mongodb
+  namespace: media-microsvc1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: movie-review-mongodb
+      death-star-project: media-microsvc
+  template:
+    metadata:
+      labels:
+        app-name: movie-review-mongodb
+        death-star-project: media-microsvc
+      name: movie-review-mongodb
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: IfNotPresent
+        name: movie-review-mongodb
+        resources:
+          limits:
+            cpu: 8000m
+            memory: 8Gi
+          requests:
+            cpu: 8000m
+            memory: 8Gi
+      restartPolicy: Always

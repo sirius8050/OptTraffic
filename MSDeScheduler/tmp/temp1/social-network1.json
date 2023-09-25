@@ -1,0 +1,47 @@
+{"social-network":{
+  "nginx-thrift": "compose-post-service",
+  "media-front" : "compose-post-service",
+  "compose-post-service": [
+    "home-timeline-service",
+    "media-service",
+    "unique-id-service",
+    "text-service",
+    "user-service",
+    "user-timeline-service",
+    "post-storage-service"
+  ],
+  "media-service": [
+    "media-mongodb",
+    "media-memcached"
+  ],
+  "home-timeline-service": [
+    "home-timeline-redis",
+    "post-storage-service",
+    "social-graph-service"
+  ],
+  "post-storage-service": [
+    "post-storage-mongodb",
+    "post-storage-memcached"
+  ],
+  "social-graph-service": [
+    "social-graph-redis",
+    "social-graph-mongodb"
+  ],
+  "text-service": [
+    "user-mention-service",
+    "url-shorten-service"
+  ],
+  "user-mention-service": [
+    "user-memcached",
+    "user-mongodb"
+  ],
+  "url-shorten-service": [
+    "url-shorten-mongodb",
+    "url-shorten-memcached"
+  ],
+  "user-service": "user-mongodb",
+  "user-timeline-service": [
+    "user-timeline-redis",
+    "user-timeline-mongodb"
+  ]
+}}

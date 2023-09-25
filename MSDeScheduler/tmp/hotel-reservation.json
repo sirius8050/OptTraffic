@@ -1,0 +1,10 @@
+{
+  "hotel-reservation": {
+    "reservation": ["mongodb-reservation", "memcached-reserve"],
+    "profile": ["mongodb-profile", "memcached-profile"],
+    "recommendation": "mongodb-recommendation",
+    "user": "mongodb-user",
+    "rate": ["mongodb-rate", "memcached-rate"],
+    "geo": "mongodb-geo"
+  }
+}

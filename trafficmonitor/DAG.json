@@ -1,0 +1,36 @@
+{
+    "nginx-thrift": "compose-post-service",
+    "compose-post-service": [
+        "post-storage-service",
+        "text-service",
+        "user-service",
+        "user-timeline-service",
+        "home-timeline-service",
+        "media-service",
+        "unique-id-service"
+    ],
+    "post-storage-service": "post-storage-mongodb",
+    "text-service": [
+        "url-shorten-service",
+        "user-mention-service"
+    ],
+    "url-shorten-service": "url-shorten-mongodb",
+    "user-service": "user-mongodb",
+    "user-timeline-service": [
+        "user-timeline-redis",
+        "user-timeline-mongodb"
+    ],
+    "home-timeline-service": [
+        "home-timeline-redis", 
+        "social-graph-service"
+    ],
+    "user-mention-service": [
+        "user-memcached",
+        "user-mongodb"
+    ],
+    "social-graph-service": [
+        "social-graph-mongodb",
+        "social-graph-redis"
+    ]
+
+}

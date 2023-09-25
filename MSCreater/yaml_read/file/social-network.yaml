@@ -1,0 +1,1529 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-timeline-mongodb
+    death-star-project: social-network
+  name: user-timeline-mongodb
+  namespace: social-network
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: user-timeline-mongodb
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: user-timeline-mongodb
+    death-star-project: social-network
+  name: user-timeline-mongodb
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: user-timeline-mongodb
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: user-timeline-mongodb
+        death-star-project: social-network
+      name: user-timeline-mongodb
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: Never
+        name: user-timeline-mongodb
+        resources:
+          limits:
+            cpu: 8000m
+            memory: 8Gi
+          requests:
+            cpu: 8000m
+            memory: 8Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: social-graph-mongodb
+    death-star-project: social-network
+  name: social-graph-mongodb
+  namespace: social-network
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: social-graph-mongodb
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: social-graph-mongodb
+    death-star-project: social-network
+  name: social-graph-mongodb
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: social-graph-mongodb
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: social-graph-mongodb
+        death-star-project: social-network
+      name: social-graph-mongodb
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: Never
+        name: social-graph-mongodb
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: post-storage-mongodb
+    death-star-project: social-network
+  name: post-storage-mongodb
+  namespace: social-network
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: post-storage-mongodb
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: post-storage-mongodb
+    death-star-project: social-network
+  name: post-storage-mongodb
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: post-storage-mongodb
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: post-storage-mongodb
+        death-star-project: social-network
+      name: post-storage-mongodb
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: Never
+        name: post-storage-mongodb
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: media-mongodb
+    death-star-project: social-network
+  name: media-mongodb
+  namespace: social-network
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: media-mongodb
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: media-mongodb
+    death-star-project: social-network
+  name: media-mongodb
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: media-mongodb
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: media-mongodb
+        death-star-project: social-network
+      name: media-mongodb
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: Never
+        name: media-mongodb
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: jaeger
+    death-star-project: social-network
+  name: jaeger-out
+  namespace: social-network
+spec:
+  ports:
+  - nodePort: 32000
+    port: 16686
+  selector:
+    app-name: jaeger
+    death-star-project: social-network
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: jaeger
+    death-star-project: social-network
+  name: jaeger-agent
+  namespace: social-network
+spec:
+  ports:
+  - name: udp1
+    port: 5775
+    protocol: UDP
+  - name: tcp1
+    port: 5778
+  - name: udp2
+    port: 6831
+    protocol: UDP
+  - name: udp3
+    port: 6832
+    protocol: UDP
+  - name: tcp2
+    port: 14250
+  - name: tcp3
+    port: 14268
+  selector:
+    app-name: jaeger
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: jaeger
+    death-star-project: social-network
+  name: jaeger-agent
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: jaeger
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: jaeger
+        death-star-project: social-network
+      name: jaeger-agent
+    spec:
+      containers:
+      - env:
+        - name: COLLECTOR_ZIPKIN_HTTP_PORT
+          value: '9411'
+        - name: JAEGER_AGENT_PORT
+          value: '6831'
+        image: jaegertracing/all-in-one:latest
+        imagePullPolicy: IfNotPresent
+        name: jaeger
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-mongodb
+    death-star-project: social-network
+  name: user-mongodb
+  namespace: social-network
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: user-mongodb
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: user-mongodb
+    death-star-project: social-network
+  name: user-mongodb
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: user-mongodb
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: user-mongodb
+        death-star-project: social-network
+      name: user-mongodb
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: Never
+        name: user-mongodb
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: url-shorten-mongodb
+    death-star-project: social-network
+  name: url-shorten-mongodb
+  namespace: social-network
+spec:
+  ports:
+  - port: 27017
+  selector:
+    app-name: url-shorten-mongodb
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: url-shorten-mongodb
+    death-star-project: social-network
+  name: url-shorten-mongodb
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: url-shorten-mongodb
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: url-shorten-mongodb
+        death-star-project: social-network
+      name: url-shorten-mongodb
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: Never
+        name: url-shorten-mongodb
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: home-timeline-redis
+    death-star-project: social-network
+  name: home-timeline-redis
+  namespace: social-network
+spec:
+  ports:
+  - port: 6379
+  selector:
+    app-name: home-timeline-redis
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: home-timeline-redis
+    death-star-project: social-network
+  name: home-timeline-redis
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: home-timeline-redis
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: home-timeline-redis
+        death-star-project: social-network
+      name: home-timeline-redis
+    spec:
+      containers:
+      - image: redis
+        imagePullPolicy: Never
+        name: home-timeline-redis
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-memcached
+    death-star-project: social-network
+  name: user-memcached
+  namespace: social-network
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: user-memcached
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: user-memcached
+    death-star-project: social-network
+  name: user-memcached
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: user-memcached
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: user-memcached
+        death-star-project: social-network
+      name: user-memcached
+    spec:
+      containers:
+      - image: memcached
+        imagePullPolicy: Never
+        name: user-memcached
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-timeline-redis
+    death-star-project: social-network
+  name: user-timeline-redis
+  namespace: social-network
+spec:
+  ports:
+  - port: 6379
+  selector:
+    app-name: user-timeline-redis
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: user-timeline-redis
+    death-star-project: social-network
+  name: user-timeline-redis
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: user-timeline-redis
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: user-timeline-redis
+        death-star-project: social-network
+      name: user-timeline-redis
+    spec:
+      containers:
+      - image: redis
+        imagePullPolicy: Never
+        name: user-timeline-redis
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: post-storage-service
+    death-star-project: social-network
+  name: post-storage-service
+  namespace: social-network
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: post-storage-service
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: post-storage-service
+    death-star-project: social-network
+  name: post-storage-service
+  namespace: social-network
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app-name: post-storage-service
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: post-storage-service
+        death-star-project: social-network
+      name: post-storage-service
+    spec:
+      containers:
+      - command:
+        - PostStorageService
+        image: yg397/social-network-microservices:latest
+        imagePullPolicy: Never
+        name: post-storage-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /social-network-microservices/config
+          name: config
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/config
+          type: Directory
+        name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: media-memcached
+    death-star-project: social-network
+  name: media-memcached
+  namespace: social-network
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: media-memcached
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: media-memcached
+    death-star-project: social-network
+  name: media-memcached
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: media-memcached
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: media-memcached
+        death-star-project: social-network
+      name: media-memcached
+    spec:
+      containers:
+      - image: memcached
+        imagePullPolicy: Never
+        name: media-memcached
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: social-graph-redis
+    death-star-project: social-network
+  name: social-graph-redis
+  namespace: social-network
+spec:
+  ports:
+  - port: 6379
+  selector:
+    app-name: social-graph-redis
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: social-graph-redis
+    death-star-project: social-network
+  name: social-graph-redis
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: social-graph-redis
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: social-graph-redis
+        death-star-project: social-network
+      name: social-graph-redis
+    spec:
+      containers:
+      - image: redis
+        imagePullPolicy: Never
+        name: social-graph-redis
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: compose-post-service
+    death-star-project: social-network
+  name: compose-post-service
+  namespace: social-network
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: compose-post-service
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: compose-post-service
+    death-star-project: social-network
+  name: compose-post-service
+  namespace: social-network
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app-name: compose-post-service
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: compose-post-service
+        death-star-project: social-network
+      name: compose-post-service
+    spec:
+      containers:
+      - command:
+        - ComposePostService
+        image: yg397/social-network-microservices:latest
+        imagePullPolicy: Never
+        name: compose-post-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /social-network-microservices/config
+          name: config
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/config
+          type: Directory
+        name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: media-frontend
+    death-star-project: social-network
+  name: media-frontend
+  namespace: social-network
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app-name: media-frontend
+    death-star-project: social-network
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: media-frontend
+    death-star-project: social-network
+  name: media-frontend
+  namespace: social-network
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app-name: media-frontend
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: media-frontend
+        death-star-project: social-network
+      name: media-frontend
+    spec:
+      containers:
+      - image: yg397/media-frontend:xenial
+        imagePullPolicy: Never
+        name: media-frontend
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /usr/local/openresty/nginx/lua-scripts
+          name: lua-scripts
+        - mountPath: /usr/local/openresty/nginx/conf/nginx.conf
+          name: nginx-conf
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/media-frontend/lua-scripts
+          type: Directory
+        name: lua-scripts
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/media-frontend/conf/nginx.conf
+          type: File
+        name: nginx-conf
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-timeline-service
+    death-star-project: social-network
+  name: user-timeline-service
+  namespace: social-network
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: user-timeline-service
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: user-timeline-service
+    death-star-project: social-network
+  name: user-timeline-service
+  namespace: social-network
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app-name: user-timeline-service
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: user-timeline-service
+        death-star-project: social-network
+      name: user-timeline-service
+    spec:
+      containers:
+      - command:
+        - UserTimelineService
+        image: yg397/social-network-microservices:latest
+        imagePullPolicy: Never
+        name: user-timeline-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /social-network-microservices/config
+          name: config
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/config
+          type: Directory
+        name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: post-storage-memcached
+    death-star-project: social-network
+  name: post-storage-memcached
+  namespace: social-network
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: post-storage-memcached
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: post-storage-memcached
+    death-star-project: social-network
+  name: post-storage-memcached
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: post-storage-memcached
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: post-storage-memcached
+        death-star-project: social-network
+      name: post-storage-memcached
+    spec:
+      containers:
+      - image: memcached
+        imagePullPolicy: Never
+        name: post-storage-memcached
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: unique-id-service
+    death-star-project: social-network
+  name: unique-id-service
+  namespace: social-network
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: unique-id-service
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: unique-id-service
+    death-star-project: social-network
+  name: unique-id-service
+  namespace: social-network
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app-name: unique-id-service
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: unique-id-service
+        death-star-project: social-network
+      name: unique-id-service
+    spec:
+      containers:
+      - command:
+        - UniqueIdService
+        image: yg397/social-network-microservices:latest
+        imagePullPolicy: Never
+        name: unique-id-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /social-network-microservices/config
+          name: config
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/config
+          type: Directory
+        name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: text-service
+    death-star-project: social-network
+  name: text-service
+  namespace: social-network
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: text-service
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: text-service
+    death-star-project: social-network
+  name: text-service
+  namespace: social-network
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app-name: text-service
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: text-service
+        death-star-project: social-network
+      name: text-service
+    spec:
+      containers:
+      - command:
+        - TextService
+        image: yg397/social-network-microservices:latest
+        imagePullPolicy: Never
+        name: text-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /social-network-microservices/config
+          name: config
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/config
+          type: Directory
+        name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: social-graph-service
+    death-star-project: social-network
+  name: social-graph-service
+  namespace: social-network
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: social-graph-service
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: social-graph-service
+    death-star-project: social-network
+  name: social-graph-service
+  namespace: social-network
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app-name: social-graph-service
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: social-graph-service
+        death-star-project: social-network
+      name: social-graph-service
+    spec:
+      containers:
+      - command:
+        - SocialGraphService
+        image: yg397/social-network-microservices
+        imagePullPolicy: Never
+        name: social-graph-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /social-network-microservices/config
+          name: config
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/config
+          type: Directory
+        name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: url-shorten-memcached
+    death-star-project: social-network
+  name: url-shorten-memcached
+  namespace: social-network
+spec:
+  ports:
+  - port: 11211
+  selector:
+    app-name: url-shorten-memcached
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: url-shorten-memcached
+    death-star-project: social-network
+  name: url-shorten-memcached
+  namespace: social-network
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: url-shorten-memcached
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: url-shorten-memcached
+        death-star-project: social-network
+      name: url-shorten-memcached
+    spec:
+      containers:
+      - image: memcached
+        imagePullPolicy: Never
+        name: url-shorten-memcached
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-service
+    death-star-project: social-network
+  name: user-service
+  namespace: social-network
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: user-service
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: user-service
+    death-star-project: social-network
+  name: user-service
+  namespace: social-network
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app-name: user-service
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: user-service
+        death-star-project: social-network
+      name: user-service
+    spec:
+      containers:
+      - command:
+        - UserService
+        image: yg397/social-network-microservices:latest
+        imagePullPolicy: Never
+        name: user-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /social-network-microservices/config
+          name: config
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/config
+          type: Directory
+        name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: nginx-thrift
+    death-star-project: social-network
+  name: nginx-thrift
+  namespace: social-network
+spec:
+  ports:
+  - nodePort: 31222
+    port: 8080
+    targetPort: 8080
+  selector:
+    app-name: nginx-thrift
+    death-star-project: social-network
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: nginx-thrift
+    death-star-project: social-network
+  name: nginx-thrift
+  namespace: social-network
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app-name: nginx-thrift
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: nginx-thrift
+        death-star-project: social-network
+      name: nginx-thrift
+    spec:
+      containers:
+      - image: yg397/openresty-thrift:xenial
+        imagePullPolicy: Never
+        name: nginx-thrift
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /usr/local/openresty/nginx/lua-scripts
+          name: lua-scripts
+        - mountPath: /usr/local/openresty/nginx/pages
+          name: pages
+        - mountPath: /usr/local/openresty/nginx/conf/nginx.conf
+          name: nginx-conf
+        - mountPath: /usr/local/openresty/nginx/jaeger-config.json
+          name: jaeger-config-json
+        - mountPath: /gen-lua
+          name: gen-lua
+        - mountPath: /usr/local/openresty/lualib/thrift
+          name: lua-thrift
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/nginx-web-server/lua-scripts
+          type: Directory
+        name: lua-scripts
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/nginx-web-server/pages
+          type: Directory
+        name: pages
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/nginx-web-server/conf/nginx.conf
+          type: File
+        name: nginx-conf
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/nginx-web-server/jaeger-config.json
+          type: File
+        name: jaeger-config-json
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/gen-lua
+          type: Directory
+        name: gen-lua
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/docker/openresty-thrift/lua-thrift
+          type: Directory
+        name: lua-thrift
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: media-service
+    death-star-project: social-network
+  name: media-service
+  namespace: social-network
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: media-service
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: media-service
+    death-star-project: social-network
+  name: media-service
+  namespace: social-network
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app-name: media-service
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: media-service
+        death-star-project: social-network
+      name: media-service
+    spec:
+      containers:
+      - command:
+        - MediaService
+        image: yg397/social-network-microservices:latest
+        imagePullPolicy: Never
+        name: media-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /social-network-microservices/config
+          name: config
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/config
+          type: Directory
+        name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: home-timeline-service
+    death-star-project: social-network
+  name: home-timeline-service
+  namespace: social-network
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: home-timeline-service
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: home-timeline-service
+    death-star-project: social-network
+  name: home-timeline-service
+  namespace: social-network
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app-name: home-timeline-service
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: home-timeline-service
+        death-star-project: social-network
+      name: home-timeline-service
+    spec:
+      containers:
+      - command:
+        - HomeTimelineService
+        image: yg397/social-network-microservices:latest
+        imagePullPolicy: Never
+        name: home-timeline-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /social-network-microservices/config
+          name: config
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/config
+          type: Directory
+        name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: user-mention-service
+    death-star-project: social-network
+  name: user-mention-service
+  namespace: social-network
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: user-mention-service
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: user-mention-service
+    death-star-project: social-network
+  name: user-mention-service
+  namespace: social-network
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app-name: user-mention-service
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: user-mention-service
+        death-star-project: social-network
+      name: user-mention-service
+    spec:
+      containers:
+      - command:
+        - UserMentionService
+        image: yg397/social-network-microservices
+        imagePullPolicy: Never
+        name: user-mention-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /social-network-microservices/config
+          name: config
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/config
+          type: Directory
+        name: config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app-name: url-shorten-service
+    death-star-project: social-network
+  name: url-shorten-service
+  namespace: social-network
+spec:
+  ports:
+  - port: 9090
+  selector:
+    app-name: url-shorten-service
+    death-star-project: social-network
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app-name: url-shorten-service
+    death-star-project: social-network
+  name: url-shorten-service
+  namespace: social-network
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app-name: url-shorten-service
+      death-star-project: social-network
+  template:
+    metadata:
+      labels:
+        app-name: url-shorten-service
+        death-star-project: social-network
+      name: url-shorten-service
+    spec:
+      containers:
+      - command:
+        - UrlShortenService
+        image: yg397/social-network-microservices:latest
+        imagePullPolicy: Never
+        name: url-shorten-service
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        volumeMounts:
+        - mountPath: /social-network-microservices/config
+          name: config
+      restartPolicy: Always
+      volumes:
+      - hostPath:
+          path: /home/k8s/exper/zxz/DeathStarBench/socialNetwork/config
+          type: Directory
+        name: config
